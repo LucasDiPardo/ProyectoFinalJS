@@ -1,0 +1,36 @@
+[{
+            "nombre":"Buzo",
+            "talle":"M",
+            "descripcion":"Remera clásica escoten en V",
+            "precio":"123",
+            "stock":"3",
+            "codigo":"1",
+            "link":"https://www.sinergiaindustrial.com.ar/images/146C645C28B442F3B32FBF41C0D331D5.jpg"},
+    {
+            "nombre":"Remera",
+            "talle":"L",
+            "descripcion":"River",
+            "precio":"231",
+            "stock":"4",
+            "codigo":"2",
+            "link":"https://d3ugyf2ht6aenh.cloudfront.net/stores/988/937/products/img_45361-a43e21ba01fb10af3016473497963185-1024-1024.jpg"
+    },
+    {
+            "nombre":"Camisera",
+            "talle":"L",
+            "descripcion":"Remera clásica escoten en V",
+            "precio":"400",
+            "stock":"7",
+            "codigo":"4",
+            "link":"https://d3ugyf2ht6aenh.cloudfront.net/stores/001/161/800/products/5900311-625444ed61dc4d897215928408471193-1024-1024.jpg"
+    },
+    {
+            "nombre":"Camiseta",
+            "talle":"L",
+            "descripcion":"asdasdas",
+            "precio":"8",
+            "stock":"5",
+            "codigo":"9",
+            "link":"https://d3ugyf2ht6aenh.cloudfront.net/stores/988/937/products/img_45361-a43e21ba01fb10af3016473497963185-1024-1024.jpg"
+
+}]
