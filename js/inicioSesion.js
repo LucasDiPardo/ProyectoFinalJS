@@ -6,12 +6,7 @@ btnInicio.addEventListener("click", iniciarSesion);
 
 
 function iniciarSesion(){
-
-    /*
-    const data= require('datos.json');
-    JSON.parse(data);    
-    console.log(data);
-*/
+    event.preventDefault();
     let nomUser= document.querySelector("#nombreUsuario").value;
     let contraUser= document.querySelector("#contraUsuario").value;
 
@@ -65,8 +60,29 @@ function datosValidos(unNombre, unaContra){
 
 }
 
+
+
 function redirigirPagina(){
-    console.log("Entra funcion redirigir");
-    console.log(window.location.href);
+
+    let timerInterval
+    Swal.fire({
+    title: '¡Excelente!',
+    html: 'Aguarde, lo estamos redirigiendo.',
+    timer: 2000,
+    timerProgressBar: true,
+    didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+        b.textContent = Swal.getTimerLeft()
+        }, 100)
+    },
+    willClose: () => {
+        clearInterval(timerInterval)
+    }
+    }).then((result) => {
+        console.log(window.location.href = '/pages/carga.html');        
+    })
+
     
 }
