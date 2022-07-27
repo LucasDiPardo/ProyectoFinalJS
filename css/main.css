@@ -1,9 +1,9 @@
 body{
     background: rgb(0,255,0);
-    background: -moz-linear-gradient(0deg, rgba(0,255,0,1) 44%, rgba(20,20,20,1) 100%);
-    background: -webkit-linear-gradient(0deg, rgba(0,255,0,1) 44%, rgba(20,20,20,1) 100%);
-    background: linear-gradient(0deg, rgba(0,255,0,1) 44%, rgba(20,20,20,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ff00",endColorstr="#141414",GradientType=1);
+background: -moz-radial-gradient(circle, rgba(0,255,0,1) 6%, rgba(20,20,20,1) 73%);
+background: -webkit-radial-gradient(circle, rgba(0,255,0,1) 6%, rgba(20,20,20,1) 73%);
+background: radial-gradient(circle, rgba(0,255,0,1) 6%, rgba(20,20,20,1) 73%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ff00",endColorstr="#141414",GradientType=1);
 }
 main {
     height: 100vh;
@@ -19,5 +19,12 @@ header{
     border-radius: 2rem;
 }
 footer{
-    background-color: #fffffe
+    background-color: #141414
+}
+
+
+.iconosRedes{
+    background-color: #fffffe;
+    border-radius: 1rem;
+    margin: .5rem;
 }

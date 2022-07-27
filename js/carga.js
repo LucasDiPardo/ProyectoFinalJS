@@ -1,11 +1,6 @@
-const botonCrear= document.querySelector("#btnCrear");
-const botonImprimir= document.querySelector("#btnImprimir");
-/*
-const btnAgregarCarrito= document.querySelector("#btnAgregarCarrito");
-btnAgregarCarrito.addEventListener("click",agregarCarrito);
-*/
-//botonImprimir.addEventListener("click", imprimirTodoElArray);
+import './main'
 
+const botonCrear= document.querySelector("#btnCrear");
 botonCrear.addEventListener("click", crearProducto);
 
 

@@ -1,23 +1,19 @@
 const produCarrito = document.querySelector("#productosCarrito");
 const padre= document.querySelector("#cardDinamica");
-//const btnVerProductos= document.querySelector("#btnVerProductos");
+const btnConfirmarCompra = document.querySelector("#confirmarCompra");
 
-window.onload = crearCard();
-
-const btnAggCarrito = document.querySelector("#btnAgregarCarrito");
-//btnVerProductos.addEventListener("onload", crearCard);
-
+if (btnConfirmarCompra){
+    btnConfirmarCompra.disabled=true;
+    btnConfirmarCompra.addEventListener("click", confirmarCompra)
+}
 
 const clickCarro= document.querySelector("#clickCarrito");
 if (clickCarro){
     clickCarro.addEventListener("click",mostrarCarrito);
 }
 
-if (btnAggCarrito){
-    btnAggCarrito.addEventListener("click", (e)=>{
-    console.log(e.target.getAttribute("value"));
-})
-}
+window.onload = crearCard();
+AOS.init();
 
 
 //Clases
@@ -45,8 +41,69 @@ class Producto {
 
 //Funciones
 
+function confirmarCompra(){    
+
+    Swal.fire({
+        title: '¿Desea confirmar Compra?',
+        showCancelButton: true,
+        confirmButtonText: 'Confirmar',
+        showLoaderOnConfirm: true,
+      }).then((result) => {
+        if (result.isConfirmed) {        
+        crearChat();
+        limpiarLS();
+        }
+      })
+    
+}
+
+function crearChat(){
+    const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
+    let telefono="5492346408404";
+    let pedidos="";
+    
+    for (const arrayProd of carrito) {  
+        pedidos+="\n------------"+
+                "\nProducto: "+arrayProd.nombre+
+                "\nPrecio: "+arrayProd.precio;
+    }
+    console.log(pedidos);
+
+    console.log("Chat Creado");
+    let url= "https://api.whatsapp.com/send?phone="+telefono+"&text="+pedidos;
+
+    window.open(url, "Confirmacion Pedido", "width=500, height=300")
+}
+
+
+function limpiarLS(){
+    
+
+    localStorage.clear();
+
+    let timerInterval
+    Swal.fire({
+    title: '¡PEDIDO CONFIRMADO!',
+    html: 'Aguarde, lo estamos redirigiendo.',
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+        b.textContent = Swal.getTimerLeft()
+        }, 100)
+    },
+    willClose: () => {
+        clearInterval(timerInterval)
+    }
+    }).then((result) => {
+        console.log(window.location.href = 'index.html');        
+    })
+}
 
 function agregarCarrito(unCodigoProducto){
+    btnConfirmarCompra.disabled=false;
     //traigo carrito o creo
     const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
     console.log(carrito);
@@ -72,8 +129,7 @@ function agregarCarrito(unCodigoProducto){
     
 }
 
-function eliminarCarrito(unCodigoProducto){
-    
+function eliminarProductoCarrito(unCodigoProducto){    
     
     console.log("Entra a la funcion");
     //traigo carrito o creo
@@ -88,6 +144,10 @@ function eliminarCarrito(unCodigoProducto){
     console.log(carrito);
     
     localStorage.setItem('carroCompras', JSON.stringify(carrito));
+
+    if (carrito.length==0){
+        btnConfirmarCompra.disabled=true;
+    }
     
     mostrarCarrito(); //para que recargue y actualice el div que muestra los productos
 }
@@ -103,7 +163,7 @@ function mostrarCarrito(){
         <hr>          
         <h4 class="text-primary d-flex justify-content-between">
         ${arrayProd.nombre} 
-        <button id="eliminarProducto" type="button" class="btn-close" onclick="eliminarCarrito(${arrayProd.codigo})">
+        <button type="button" class="eliminarProducto btn-close" data-id="(${arrayProd.codigo})">
         </button>
         </h4>     
         <h6 class="text-secondary ">Descripcion: ${arrayProd.descripcion}</h6>
@@ -112,11 +172,18 @@ function mostrarCarrito(){
         </div>
         `
     }
-}
+    const [...btns1] = document.getElementsByClassName('eliminarProducto'); //convierte en array
 
-function crearCard(){
-    
-    
+        btns1.forEach((elm) => {
+        elm.addEventListener("click", (e)=>{
+            eliminarProductoCarrito(e.target.getAttribute('data-id'));
+        })
+    })
+
+    }
+
+
+function crearCard(){       
     let html="";
     padre.innerHTML= html;
     
@@ -130,24 +197,39 @@ function crearCard(){
             
             html = `
             <div class="card p-2 m-1" style="width: 18rem;">
-            <img src="${arrayProd?.link}" class="card-img-top img-fluid h-50" alt="...">
-            <div class="card-body">
-            <h5 class="card-title">${arrayProd?.nombre}
-            </h5>
-            <p class="card-text">${arrayProd?.descripcion}
-            </p>
-            <p class="card-text">Precio:$ ${arrayProd?.precio}
-            </p>
-            <div class="d-flex justify-content-center mt-2">
-            <button id="btnAgregarCarrito" class=" btn btn-dark m-1" value="${arrayProd.codigo}" >
-            AGREGAR AL CARRITO
-            </button>
-            </div>                    
-            
-            </div>
-            </div>`;            
+                <img src="${arrayProd?.link}" class="card-img-top img-fluid h-50" alt="...">
+                <div class="card-body">
+                
+                    <h5 class="card-title">
+                        ${arrayProd?.nombre}
+                    </h5>
+
+                    <p class="card-text">
+                        ${arrayProd?.descripcion}
+                    </p>
+
+                    <p class="card-text">
+                        Precio:$ ${arrayProd?.precio}
+                    </p>
+
+                    <div class="d-flex justify-content-center mt-2">
+
+                        <button class="btnAgregarCarrito btn btn-dark m-1" data-id="${arrayProd.codigo}" >
+                            AGREGAR AL CARRITO
+                        </button>
+                    </div>           
+                </div>
+            </div>`;        
             padre.innerHTML+= html;
-        }  
+        }
+
+        const [...btns] = document.getElementsByClassName('btnAgregarCarrito'); //convierte en array
+
+        btns.forEach((elm) => {
+        elm.addEventListener("click", (e)=>{
+            agregarCarrito(e.target.getAttribute('data-id'));
+        })
+    })
     }
 
     importarProductos();

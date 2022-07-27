@@ -1,36 +1,37 @@
 [{
-            "nombre":"Buzo",
+            "nombre":"Remera Clasica",
             "talle":"M",
-            "descripcion":"Remera clásica escoten en V",
-            "precio":"123",
+            "descripcion":"Blanca, Mangas Corta",
+            "precio":"550",
             "stock":"3",
             "codigo":"1",
-            "link":"https://www.sinergiaindustrial.com.ar/images/146C645C28B442F3B32FBF41C0D331D5.jpg"},
+            "link":"https://www.veslab.com/3858-medium_default/camiseta-blanca-manga-corta-hombre-100-algodon.jpg"},
     {
-            "nombre":"Remera",
+            "nombre":"Hoodie",
             "talle":"L",
-            "descripcion":"River",
-            "precio":"231",
+            "descripcion":"Negro, con Capucha",
+            "precio":"7500",
             "stock":"4",
             "codigo":"2",
             "link":"https://d3ugyf2ht6aenh.cloudfront.net/stores/988/937/products/img_45361-a43e21ba01fb10af3016473497963185-1024-1024.jpg"
     },
     {
-            "nombre":"Camisera",
+            "nombre":"Buzo",
             "talle":"L",
-            "descripcion":"Remera clásica escoten en V",
-            "precio":"400",
+            "descripcion":"Gris, Mangas Largas",
+            "precio":"4000",
             "stock":"7",
             "codigo":"4",
             "link":"https://d3ugyf2ht6aenh.cloudfront.net/stores/001/161/800/products/5900311-625444ed61dc4d897215928408471193-1024-1024.jpg"
     },
     {
-            "nombre":"Camiseta",
+            "nombre":"Camiseta Futbol",
             "talle":"L",
-            "descripcion":"asdasdas",
-            "precio":"8",
+            "descripcion":"River, Titular",
+            "precio":"9500",
             "stock":"5",
             "codigo":"9",
-            "link":"https://d3ugyf2ht6aenh.cloudfront.net/stores/988/937/products/img_45361-a43e21ba01fb10af3016473497963185-1024-1024.jpg"
+            "link":"http://d3ugyf2ht6aenh.cloudfront.net/stores/001/387/251/products/river-campeones-20211-67ff98b87b4615f41f16397684703878-640-0.jpg"
 
-}]
+}
+]
