@@ -2,6 +2,8 @@ const produCarrito = document.querySelector("#productosCarrito");
 const padre= document.querySelector("#cardDinamica");
 const btnConfirmarCompra = document.querySelector("#confirmarCompra");
 
+//const totalCarrito = document.querySelector("#totalCarrito");
+
 if (btnConfirmarCompra){
     btnConfirmarCompra.disabled=true;
     btnConfirmarCompra.addEventListener("click", confirmarCompra)
@@ -60,7 +62,7 @@ function confirmarCompra(){
 
 function crearChat(){
     const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
-    let telefono='5492346541804';
+    let telefono='5492346408404';
     let pedidos='';
     let total=0;
 
@@ -163,7 +165,8 @@ function eliminarProductoCarrito(unCodigoProducto){
 
 function mostrarCarrito(){
     const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
-    
+    const tot=0;
+
     if (carrito.length!=0){
         btnConfirmarCompra.disabled=false;
     }else{
@@ -171,40 +174,56 @@ function mostrarCarrito(){
     }
     produCarrito.innerHTML=``;
     
-    for (const arrayProd of carrito) {            
+    for (const arrayProd of carrito) {    
+        
         produCarrito.innerHTML+= `
         <div>
-        <hr>          
-        <div class="d-flex justify-content-between">
-            <h4 class="text-primary ">
-                ${arrayProd.nombre} 
-            </h4>     
-            <button class="eliminarProducto bg-transparent rounded-3" data-id="(${arrayProd.codigo})">
-                <i class="fa-solid fa-trash-can"></i>
-            </button>
+            <hr>          
+            <div class="d-flex justify-content-between">
+                <h4 class="text-primary ">
+                    ${arrayProd.nombre} 
+                </h4>     
+                <button class="eliminarProducto bg-transparent rounded-3" data-id="(${arrayProd.codigo})">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+            
+            <h6 class="text-secondary ">
+                Descripcion: ${arrayProd.descripcion}
+            </h6>
+            <h6 class="text-secondary ">
+                Codigo: ${arrayProd.codigo}
+            </h6>
+            <h6 class="text-secondary ">
+                Precio:$ ${arrayProd.precio}
+            </h6>
         </div>
-        
-        <h6 class="text-secondary ">
-            Descripcion: ${arrayProd.descripcion}
-        </h6>
-        <h6 class="text-secondary ">
-            Codigo: ${arrayProd.codigo}
-        </h6>
-        <h6 class="text-secondary ">
-            Precio:$ ${arrayProd.precio}
-        </h6>
-        </div>
-        `
+        `        
     }
-    const [...btns1] = document.getElementsByClassName('eliminarProducto'); //convierte en array
 
-        btns1.forEach((elm) => {
+
+    const [...btns1] = document.getElementsByClassName('eliminarProducto'); //convierte en array
+    
+    btns1.forEach((elm) => {
         elm.addEventListener("click", (e)=>{
             eliminarProductoCarrito(e.target.getAttribute('data-id'));
         })
     })
+    /*
+    carrito.foreach(producto=>{
+        tot+=parseInt(producto.precio); 
+    });
 
-    }
+    totalCarrito.innerHTML=``;
+    totalCarrito.innerHTML= `
+    <div>
+        <h6 class="text-secondary ">
+            Total:$ ${tot}
+        </h6>
+    </div>                
+    `;
+    */
+}
 
 
 function crearCard(){       
@@ -263,7 +282,6 @@ function crearCard(){
 function avisoProductoAgregado(){
     Toastify({
         text: "Agregado al Carrito",
-        gravity: "bottom",
         position: 'left',
         style: {
           background: "linear-gradient(to right, #00ff33, #141414)",

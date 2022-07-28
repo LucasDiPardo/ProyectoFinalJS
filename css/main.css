@@ -8,6 +8,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ff00",endCo
 main {
     height: 100vh;
 }
+
 header{
     background-color: #fffffe;    
 }
