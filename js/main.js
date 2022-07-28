@@ -60,29 +60,27 @@ function confirmarCompra(){
 
 function crearChat(){
     const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
-    let telefono='5492346408404';
+    let telefono='5492346541804';
     let pedidos='';
     let total=0;
 
-    for (const arrayProd of carrito) {  
-        
-        total+=parseInt(arrayProd.precio);
-        
-        pedidos+='-------------------------------------'+
-                'Producto:    '+arrayProd.nombre+
-                'Talle:    '+arrayProd.talle+
-                'Precio:      '+arrayProd.precio;
-    }
+    pedidos+='Gracias por realizar su compra en ZetaIndumentaria. Hemos recibido su pedido, a continuación le dejamos un resumen de los productos comprados. \n';
+    pedidos+='*———————PEDIDO——————* \n';
 
-    pedidos+='-----------------------------------'+
-            'Total:$ '+total;
+    carrito.forEach(producto =>{
+        total+=parseInt(producto.precio);
+        pedidos+= '*'+ producto.nombre + '*, Talle: '+ producto.talle + ', Precio: $'+ producto.precio + '. \n';
+    });
+
+    pedidos+='----------------------------- \n';
+    pedidos+= '*Total: $' + total + '*\n';
+
     
     console.log(pedidos);
 
-    console.log("Chat Creado");
-    let url= "https://api.whatsapp.com/send?phone="+telefono+"&text="+pedidos;
+    let url= "https://api.whatsapp.com/send?phone="+telefono+"&text="+ encodeURIComponent(pedidos);
 
-    window.open(url, "Confirmacion Pedido", "width=500, height=300");
+    window.location=url;
 }
 
 
@@ -136,6 +134,7 @@ function agregarCarrito(unCodigoProducto){
         localStorage.setItem('carroCompras', JSON.stringify(carrito));
     }
     importarProductos();
+    avisoProductoAgregado();
     
 }
 
@@ -176,14 +175,24 @@ function mostrarCarrito(){
         produCarrito.innerHTML+= `
         <div>
         <hr>          
-        <h4 class="text-primary d-flex justify-content-between">
-        ${arrayProd.nombre} 
-        <button type="button" class="eliminarProducto btn-close" data-id="(${arrayProd.codigo})">
-        </button>
-        </h4>     
-        <h6 class="text-secondary ">Descripcion: ${arrayProd.descripcion}</h6>
-        <h6 class="text-secondary ">Codigo: ${arrayProd.codigo}</h6>
-        <h6 class="text-secondary ">Precio:$ ${arrayProd.precio}</h6>
+        <div class="d-flex justify-content-between">
+            <h4 class="text-primary ">
+                ${arrayProd.nombre} 
+            </h4>     
+            <button class="eliminarProducto bg-transparent rounded-3" data-id="(${arrayProd.codigo})">
+                <i class="fa-solid fa-trash-can"></i>
+            </button>
+        </div>
+        
+        <h6 class="text-secondary ">
+            Descripcion: ${arrayProd.descripcion}
+        </h6>
+        <h6 class="text-secondary ">
+            Codigo: ${arrayProd.codigo}
+        </h6>
+        <h6 class="text-secondary ">
+            Precio:$ ${arrayProd.precio}
+        </h6>
         </div>
         `
     }
@@ -211,7 +220,7 @@ function crearCard(){
         for (const arrayProd of productos) { //recorro el array y voy creando div            
             
             html = `
-            <div class="card p-2 m-1" style="width: 18rem;">
+            <div class="col-sm-12 card p-2 m-1" style="width: 18rem;">
                 <img src="${arrayProd?.link}" class="card-img-top img-fluid h-50" alt="...">
                 <div class="card-body">
                 
@@ -251,5 +260,13 @@ function crearCard(){
 }
 
 
-
-
+function avisoProductoAgregado(){
+    Toastify({
+        text: "Agregado al Carrito",
+        gravity: "bottom",
+        position: 'left',
+        style: {
+          background: "linear-gradient(to right, #00ff33, #141414)",
+        }
+      }).showToast();
+}
