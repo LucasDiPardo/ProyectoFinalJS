@@ -13,6 +13,7 @@ if (clickCarro){
 }
 
 window.onload = crearCard();
+
 AOS.init();
 
 
@@ -59,20 +60,29 @@ function confirmarCompra(){
 
 function crearChat(){
     const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
-    let telefono="5492346408404";
-    let pedidos="";
-    
+    let telefono='5492346408404';
+    let pedidos='';
+    let total=0;
+
     for (const arrayProd of carrito) {  
-        pedidos+="\n------------"+
-                "\nProducto: "+arrayProd.nombre+
-                "\nPrecio: "+arrayProd.precio;
+        
+        total+=parseInt(arrayProd.precio);
+        
+        pedidos+='-------------------------------------'+
+                'Producto:    '+arrayProd.nombre+
+                'Talle:    '+arrayProd.talle+
+                'Precio:      '+arrayProd.precio;
     }
+
+    pedidos+='-----------------------------------'+
+            'Total:$ '+total;
+    
     console.log(pedidos);
 
     console.log("Chat Creado");
     let url= "https://api.whatsapp.com/send?phone="+telefono+"&text="+pedidos;
 
-    window.open(url, "Confirmacion Pedido", "width=500, height=300")
+    window.open(url, "Confirmacion Pedido", "width=500, height=300");
 }
 
 
@@ -98,7 +108,7 @@ function limpiarLS(){
         clearInterval(timerInterval)
     }
     }).then((result) => {
-        console.log(window.location.href = 'index.html');        
+        //console.log(window.location.href = 'index.html');        
     })
 }
 
@@ -155,6 +165,11 @@ function eliminarProductoCarrito(unCodigoProducto){
 function mostrarCarrito(){
     const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
     
+    if (carrito.length!=0){
+        btnConfirmarCompra.disabled=false;
+    }else{
+        btnConfirmarCompra.disabled=true;
+    }
     produCarrito.innerHTML=``;
     
     for (const arrayProd of carrito) {            

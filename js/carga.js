@@ -1,4 +1,4 @@
-import './main'
+//import './main'
 
 const botonCrear= document.querySelector("#btnCrear");
 botonCrear.addEventListener("click", crearProducto);
@@ -37,11 +37,11 @@ function avisoError(){
 function camposValidos(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto){
     
     //creo producto 
-    const prod= new Producto(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto);
+    //const prod= new Producto(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto);
     
     //agrego producto al LocalStorage
-    agregarProductoNuevo(prod);
-    desestructuracion(prod);    
+    agregarProductoNuevo(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto);
+    //desestructuracion(prod);    
     
 }
 
@@ -52,12 +52,12 @@ function validarFormulario(nombreProducto, talleProducto, descripcionProducto, p
 
 
 
-function agregarProductoNuevo(unProductoNuevo){
+function agregarProductoNuevo(nombre,talle,descripcion,precio,cantidad,codigo,link){
     //en esta funcion estaban los procesos en donde el producto era guardado en el LS, se modifico ya que los productos se encuentran en el json
     Swal.fire({
-        title: unProductoNuevo.nombre,
-        text: unProductoNuevo.descripcion,
-        imageUrl: unProductoNuevo.link,
+        title: nombre,
+        text: "Descripcion: " + descripcion + ".Talle: "+ talle + ".Precio",
+        imageUrl: link,
         imageWidth: 400,
         imageHeight: 200,
         imageAlt: 'Imagen Producto',
@@ -68,7 +68,7 @@ function agregarProductoNuevo(unProductoNuevo){
     })    
 }
 
-
+/*
 
 function desestructuracion(unProducto){ //desestructuracion y aplicacion de alias 
     const { nombre:nombreDelProducto , talle:talleDelProducto, descripcion:descripcionDelProducto,precio:precioDelProducto,cantidad:cantidadDeProductos,codigo:codigoDelProducto,link:linkImagenProducto} = unProducto ;
@@ -82,7 +82,7 @@ function desestructuracion(unProducto){ //desestructuracion y aplicacion de alia
     console.log(linkImagenProducto);
 }
 
-
+*/
 
 
 

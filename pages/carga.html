@@ -27,11 +27,10 @@
       </div>
         <form class="col-12 w-50 p-3" id="formularioCarga" action="#">
             <div class="mb-3">
-                <label for="formGroupExampleInput" class="form-label" >Nombre Producto</label>
-                <input  type="text" class="form-control" id="nombreProducto" placeholder="Remera Lisa" >
+                
+                <input  type="text" class="form-control" id="nombreProducto" placeholder="Nombre Producto" >
               </div>
-              <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label" >Talle</label>
+              <div class="mb-3">                
                 <select id="talleProducto" class="form-select" aria-label="Default select example" >
                   <option value="">Seleccione Talle</option>
                   <option value="S">S</option>
@@ -41,28 +40,30 @@
                 </select>
               </div>
               <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label" >Descripción</label>
-                <input type="text" class="form-control" id="descripcionProducto" placeholder="Remera lisa con cuello redondo" >
+                
+                <input type="text" class="form-control" id="descripcionProducto" placeholder="Descripcion" >
               </div>
               <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Precio</label>
-                <input type="number" class="form-control" id="precioProducto" placeholder="$200" >
+                
+                <input type="number" class="form-control" id="precioProducto" placeholder="Precio" >
               </div>
               <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Cantidad</label>
-                <input type="number" class="form-control" id="cantidadProducto" placeholder="Ej: 210" >
+                
+                <input type="number" class="form-control" id="cantidadProducto" placeholder="Cantidad" >
               </div>
               <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Codigo Unico</label>
-                <input type="number" class="form-control" id="codigoProducto" placeholder="...." >
+                
+                <input type="number" class="form-control" id="codigoProducto" placeholder="Código" >
               </div>
               <div class="mb-3">
-                <label for="formGroupExampleInput2" class="form-label">Link Imagen</label>
-                <input type="text" class="form-control" id="linkProducto" placeholder="www.google.com/imagenes" >
+                
+                <input type="text" class="form-control" id="linkProducto" placeholder="Link: Ej: www.google.com/imagenes" >
               </div>
 
-              <button id="btnCrear" class="btn btn-success">Cargar</button> 
-              <a href="/index.html" class="btn btn-primary">Ir a Pagina Principal</a>
+              <div class="text-center">
+                <button id="btnCrear" class="btn btn-success m-1">Cargar</button> 
+                <a href="/index.html" class="btn btn-primary m-1">Ir a Pagina Principal</a>
+              </div>
         </form>
         
     </main>
@@ -76,7 +77,7 @@
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
 
     <script src="../js/carga.js"></script>
-    <script type="module" src="../js/main.js"  ></script>
+    <!--<script type="module" src="../js/main.js"  ></script> -->
     <script src="../node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
 </body>
 </html>
