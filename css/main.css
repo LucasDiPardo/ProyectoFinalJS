@@ -1,10 +1,11 @@
 body{
-    background: rgb(0,255,0);
-background: -moz-radial-gradient(circle, rgba(0,255,0,1) 6%, rgba(20,20,20,1) 73%);
-background: -webkit-radial-gradient(circle, rgba(0,255,0,1) 6%, rgba(20,20,20,1) 73%);
-background: radial-gradient(circle, rgba(0,255,0,1) 6%, rgba(20,20,20,1) 73%);
-filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#00ff00",endColorstr="#141414",GradientType=1);
+    background: #FFA17F;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to top, #00223E, #FFA17F);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to top, #00223E, #FFA17F); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
 }
+
+
 main {
     height: 100vh;
 }
@@ -28,4 +29,8 @@ footer{
     background-color: #fffffe;
     border-radius: 1rem;
     margin: .5rem;
+}
+
+.descProdu{
+    color: #fffffe;
 }

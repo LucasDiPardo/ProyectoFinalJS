@@ -30,14 +30,19 @@ function valido(nombreUser, contraUSer){
 function avisoError(){
     Toastify({
         text: "COMPLETE LOS CAMPOS",            
-        duration: 2000        
+        duration: 2000,
+        style: {
+            background: "linear-gradient(to right, #FFA17F, #141414)",
+          }     
     }).showToast();
 }
 
 function avisoError2(){
     Toastify({
         text: "Usuario o Contraseña no coincide",            
-        duration: 2000        
+        duration: 2000,style: {
+            background: "linear-gradient(to right, #FFA17F, #141414)",
+          }     
     }).showToast();
 }
 

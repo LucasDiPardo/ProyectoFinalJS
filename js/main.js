@@ -165,7 +165,7 @@ function eliminarProductoCarrito(unCodigoProducto){
 
 function mostrarCarrito(){
     const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
-    const tot=0;
+    let tot=0;
 
     if (carrito.length!=0){
         btnConfirmarCompra.disabled=false;
@@ -198,9 +198,17 @@ function mostrarCarrito(){
                 Precio:$ ${arrayProd.precio}
             </h6>
         </div>
-        `        
+        `     
+        tot+=parseInt(arrayProd.precio);    
     }
 
+    totalCarrito.innerHTML= `
+    <div>
+        <h6 class="text-secondary ">
+            Total:$ ${tot}
+        </h6>
+    </div>                
+    `;
 
     const [...btns1] = document.getElementsByClassName('eliminarProducto'); //convierte en array
     
@@ -209,20 +217,6 @@ function mostrarCarrito(){
             eliminarProductoCarrito(e.target.getAttribute('data-id'));
         })
     })
-    /*
-    carrito.foreach(producto=>{
-        tot+=parseInt(producto.precio); 
-    });
-
-    totalCarrito.innerHTML=``;
-    totalCarrito.innerHTML= `
-    <div>
-        <h6 class="text-secondary ">
-            Total:$ ${tot}
-        </h6>
-    </div>                
-    `;
-    */
 }
 
 
@@ -284,7 +278,7 @@ function avisoProductoAgregado(){
         text: "Agregado al Carrito",
         position: 'left',
         style: {
-          background: "linear-gradient(to right, #00ff33, #141414)",
+          background: "linear-gradient(to right, #FFA17F, #141414)",
         }
       }).showToast();
 }
