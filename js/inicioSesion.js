@@ -9,8 +9,7 @@ function iniciarSesion(){
     event.preventDefault();
     let nomUser= document.querySelector("#nombreUsuario").value;
     let contraUser= document.querySelector("#contraUsuario").value;
-
-    
+        
     let chequear = valido(nomUser, contraUser);
 
     chequear ? datosValidos(nomUser, contraUser) : avisoError();
@@ -76,17 +75,13 @@ function redirigirPagina(){
     timer: 2000,
     timerProgressBar: true,
     didOpen: () => {
-        Swal.showLoading()
-        const b = Swal.getHtmlContainer().querySelector('b')
-        timerInterval = setInterval(() => {
-        b.textContent = Swal.getTimerLeft()
-        }, 100)
+        Swal.showLoading()        
     },
     willClose: () => {
         clearInterval(timerInterval)
     }
     }).then((result) => {
-        console.log(window.location.href = 'carga.html');        
+        console.log(window.location.href = 'carga.html');    
     })
 
     

@@ -1,10 +1,5 @@
-//import './main'
-
 const botonCrear= document.querySelector("#btnCrear");
 botonCrear.addEventListener("click", crearProducto);
-
-
-
 
 function crearProducto(){ //evento onclick llama aca
     event.preventDefault();
@@ -37,11 +32,7 @@ function avisoError(){
 }
 
 
-function camposValidos(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto){
-    
-    //creo producto 
-    //const prod= new Producto(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto);
-    
+function camposValidos(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto){    
     //agrego producto 
     agregarProductoNuevo(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto); 
     

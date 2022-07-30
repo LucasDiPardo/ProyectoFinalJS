@@ -2,7 +2,6 @@ const produCarrito = document.querySelector("#productosCarrito");
 const padre= document.querySelector("#cardDinamica");
 const btnConfirmarCompra = document.querySelector("#confirmarCompra");
 
-//const totalCarrito = document.querySelector("#totalCarrito");
 
 if (btnConfirmarCompra){
     btnConfirmarCompra.disabled=true;
@@ -77,17 +76,13 @@ function crearChat(){
     pedidos+='----------------------------- \n';
     pedidos+= '*Total: $' + total + '*\n';
 
-    
-    console.log(pedidos);
-
     let url= "https://api.whatsapp.com/send?phone="+telefono+"&text="+ encodeURIComponent(pedidos);
 
     window.location=url;
 }
 
 
-function limpiarLS(){
-    
+function limpiarLS(){    
 
     localStorage.clear();
 
@@ -114,9 +109,10 @@ function limpiarLS(){
 
 function agregarCarrito(unCodigoProducto){
     btnConfirmarCompra.disabled=false;
+
     //traigo carrito o creo
     const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
-    console.log(carrito);
+    
     //traigo productos del .json
     const prodcutosJson = '../js/productos.json';
     
@@ -126,15 +122,11 @@ function agregarCarrito(unCodigoProducto){
         const productos = await respuesta.json()
         
         let productoEncontrado = productos.find((elemento)=> (elemento.codigo == unCodigoProducto));
-        
-        console.log(carrito);
-        console.log(productos);
-        console.log(productoEncontrado);
         carrito.push(productoEncontrado);
-        console.log(carrito);
         
         localStorage.setItem('carroCompras', JSON.stringify(carrito));
     }
+
     importarProductos();
     avisoProductoAgregado();
     
@@ -142,21 +134,12 @@ function agregarCarrito(unCodigoProducto){
 
 function eliminarProductoCarrito(unCodigoProducto){    
     
-    console.log("Entra a la funcion");
     //traigo carrito o creo
     const carrito= (JSON.parse(localStorage.getItem('carroCompras'))) || [];
-    //console.log(carrito);
     
     let posiEncontrado = carrito.indexOf(carrito.find((elemento)=> (elemento.codigo == unCodigoProducto)))
 
-    console.log(unCodigoProducto);
-
-    console.log((carrito.find((elemento)=> (elemento.codigo == unCodigoProducto))));
-
-    console.log(carrito);
-    console.log(posiEncontrado);
     carrito.splice(posiEncontrado, 1)
-    console.log(carrito);
     
     localStorage.setItem('carroCompras', JSON.stringify(carrito));
 
@@ -217,7 +200,6 @@ function mostrarCarrito(){
     btns1.forEach((elm) => {
         elm.addEventListener("click", (e)=>{
             eliminarProductoCarrito(e.target.getAttribute('data-id'));
-            console.log(e.target.getAttribute('data-id'));
         })
     })
 }
