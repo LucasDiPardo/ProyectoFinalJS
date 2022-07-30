@@ -108,7 +108,7 @@ function limpiarLS(){
         clearInterval(timerInterval)
     }
     }).then((result) => {
-        //console.log(window.location.href = 'index.html');        
+        console.log("Redirigido Correctamente");        
     })
 }
 

@@ -42,9 +42,8 @@ function camposValidos(nombreProducto, talleProducto, descripcionProducto, preci
     //creo producto 
     //const prod= new Producto(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto);
     
-    //agrego producto al LocalStorage
-    agregarProductoNuevo(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto);
-    //desestructuracion(prod);    
+    //agrego producto 
+    agregarProductoNuevo(nombreProducto, talleProducto, descripcionProducto, precioProducto,cantidadProducto,codigoProducto,linkProducto); 
     
 }
 
@@ -71,21 +70,6 @@ function agregarProductoNuevo(nombre,talle,descripcion,precio,cantidad,codigo,li
     })    
 }
 
-/*
-
-function desestructuracion(unProducto){ //desestructuracion y aplicacion de alias 
-    const { nombre:nombreDelProducto , talle:talleDelProducto, descripcion:descripcionDelProducto,precio:precioDelProducto,cantidad:cantidadDeProductos,codigo:codigoDelProducto,link:linkImagenProducto} = unProducto ;
-
-    console.log("----Ulltimo Producto Agregado---");
-    console.log(nombreDelProducto);
-    console.log(talleDelProducto);
-    console.log(descripcionDelProducto);
-    console.log(precioDelProducto);
-    console.log(codigoDelProducto);
-    console.log(linkImagenProducto);
-}
-
-*/
 
 
 
