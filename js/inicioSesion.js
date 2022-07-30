@@ -86,7 +86,7 @@ function redirigirPagina(){
         clearInterval(timerInterval)
     }
     }).then((result) => {
-        console.log(window.location.href = '/pages/carga.html');        
+        console.log(window.location.href = 'carga.html');        
     })
 
     

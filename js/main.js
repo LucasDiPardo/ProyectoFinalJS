@@ -148,7 +148,11 @@ function eliminarProductoCarrito(unCodigoProducto){
     //console.log(carrito);
     
     let posiEncontrado = carrito.indexOf(carrito.find((elemento)=> (elemento.codigo == unCodigoProducto)))
-    
+
+    console.log(unCodigoProducto);
+
+    console.log((carrito.find((elemento)=> (elemento.codigo == unCodigoProducto))));
+
     console.log(carrito);
     console.log(posiEncontrado);
     carrito.splice(posiEncontrado, 1)
@@ -183,9 +187,7 @@ function mostrarCarrito(){
                 <h4 class="text-primary ">
                     ${arrayProd.nombre} 
                 </h4>     
-                <button class="eliminarProducto bg-transparent rounded-3" data-id="(${arrayProd.codigo})">
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
+                <button class="eliminarProducto btn bg-transparent rounded-1 fa-solid fa-trash-can" data-id="${arrayProd.codigo}"></button>
             </div>
             
             <h6 class="text-secondary ">
@@ -215,6 +217,7 @@ function mostrarCarrito(){
     btns1.forEach((elm) => {
         elm.addEventListener("click", (e)=>{
             eliminarProductoCarrito(e.target.getAttribute('data-id'));
+            console.log(e.target.getAttribute('data-id'));
         })
     })
 }
